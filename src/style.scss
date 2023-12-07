@@ -1,0 +1,134 @@
+$black: #02090d;
+$black-op: #262626;
+$red: #db2b30;
+$white: #eef4f6;
+
+body {
+    box-sizing: border-box;
+    color: $white;
+    background-color: $black-op;
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+    justify-content: space-around;
+}
+
+
+@mixin clip-path {
+	clip-path: polygon(
+		20px 0,
+		100% 0,
+		100% calc(100% - 20px),
+		calc(100% - 20px) 100%,
+		0 100%,
+		0 20px
+	);
+}
+
+.link {
+	position: relative;
+	width: 265px;
+	height: 66px;
+}
+
+.cyber-cta,
+.cyber-cta * {
+	box-sizing: border-box;
+}
+.cyber-cta {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	cursor: pointer;
+
+	&--background,
+	&--background div,
+	&--foreground {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	&--background {
+		z-index: -1;
+		filter: drop-shadow(5px 8px 30px rgba($red, 0.15));
+
+		> div {
+			content: "";
+			background: $black;
+			border: 1px solid $red;
+			@include clip-path;
+		}
+	}
+
+	&--foreground {
+		border: 1px solid $red;
+		@include clip-path;
+
+		transform: translateX(-5px) translateY(-5px);
+		will-change: transform;
+		transition: 0.2s transform;
+	}
+
+	&--background,
+	&--foreground {
+		&:after,
+		&:before {
+			content: "";
+			position: absolute;
+			width: 1px;
+			height: 28px;
+			background: $red;
+		}
+		&:after {
+			top: calc(28.28px / -2);
+			left: 0;
+			transform: rotate(45deg) translateX(13.5px) translateY(1px);
+		}
+		&:before {
+			bottom: calc(28.28px / -2);
+			right: 0;
+			transform: rotate(45deg) translateX(-13.5px) translateY(-0.5px);
+		}
+	}
+
+	&--text {
+		margin: auto;
+		font-family: aileron, sans-serif;
+		font-size: 32px;
+		font-weight: 900;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: $white;
+		text-shadow: 4px 4px 30px rgba($white, 0.1);
+
+		will-change: letter-spacing;
+		transition: 0.2s letter-spacing;
+
+		&::selection {
+			background: none;
+		}
+	}
+
+	&:hover {
+		.cyber-cta--text {
+			letter-spacing: 0.08em;
+		}
+		.cyber-cta--foreground {
+			transform: translateX(-8px) translateY(-8px);
+		}
+	}
+	&:active {
+		.cyber-cta--foreground {
+			transform: translateX(0px) translateY(0px);
+		}
+	}
+}

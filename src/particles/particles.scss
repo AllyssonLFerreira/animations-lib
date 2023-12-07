@@ -1,0 +1,17 @@
+html, body {
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+}
+
+#particles{
+    z-index: -100;
+    position:fixed;
+}
+
+button {
+    position: absolute;
+    top: 2%;
+    left: 3%;
+    z-index: 10;
+}

@@ -1,0 +1,17 @@
+html{
+    width:100%;
+    height:100%;
+    background: #242726; /* Old browsers */
+    background-color: #e9bcb7;
+    background-image: linear-gradient(315deg, #383b3a 0%, #151817 74%);
+    overflow-x:hidden;
+    overflow-y:hidden;
+
+  }
+  
+  #canvas{
+    position:absolute;
+    z-index:99;
+  }
+  
+  
