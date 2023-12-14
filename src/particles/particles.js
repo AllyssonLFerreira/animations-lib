@@ -3,7 +3,6 @@ import * as THREE from 'three';
 
 console.clear();
 
-function init() {}
 
 //properties
 let FIELD_OF_VIEW = 60;
